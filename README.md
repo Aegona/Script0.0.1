@@ -1,7 +1,7 @@
 ---> Aegona x Hub <-- {{[ Free Script ]}}
 
 _G.HideHB = true
-_G.ABC = false
+_G.ABC = true
 
 function attack() -- AUTO ATTACK
     game:GetService'VirtualUser':CaptureController()
@@ -361,15 +361,6 @@ end
 end
 end)
 
-section1:addToggle("FreeHaki", nil, function(value)
-   while wait(1)  do
-local args = {
-    [1] = "Buso"
-}
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-
-end
-end)
 
 
 section1:addToggle("FastAttck Mobile", nil, function(value)
