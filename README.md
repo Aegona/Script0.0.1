@@ -1,5 +1,31 @@
 ---> Aegona x Hub <-- {{[ Free Script ]}}
 
+_G.HideHB = true
+_G.ABC = true
+
+function attack() -- AUTO ATTACK
+    game:GetService'VirtualUser':CaptureController()
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+end
+
+function hitbox() -- HITBOX
+    local enamie = game:GetService("Workspace").Enemies:GetChildren()
+    
+    for i,v in pairs(enamie) do
+        v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+        v.HumanoidRootPart.CanCollide = true
+        if _G.HideHB == true then
+        v.HumanoidRootPart.Transparency = 1
+        elseif _G.HideHB == false then
+            v.HumanoidRootPart.Transparency = 0.5
+            end
+        end
+    
+end
+
+
+
+
 local Weaponlist = {}
 local Weapon = nil
 
@@ -30,8 +56,6 @@ ToogleA.MouseButton1Click:Connect(function()
 end)
 
 UICorner.Parent = ToogleA
-
-
 
 
 function CheckQuest()
@@ -78,17 +102,17 @@ function CheckQuest()
 
                    elseif Lv == 60 or Lv <= 74 then
        Ms = "Desert Bandit [Lv. 60]"
-       CQ = CFrame.new(-1924.693115234375, 37.82392501831055, -12850.0869140625)
+       CQ = CFrame.new(900.2313232421875, 6.513261318206787, 4385.94287109375)
        CM = CFrame.new(932.9173583984375, 6.450429439544678, 4463.5068359375)
-       NQ = "BuggyQuest1"
+       NQ = "DesertQuest"
        NM = "Desert Bandit"
        LQ = 1
 
                elseif Lv == 75 or Lv <= 89 then
        Ms = "Desert Officer [Lv. 70]"
-       CQ = CFrame.new(-1924.693115234375, 37.82392501831055, -12850.0869140625)
+       CQ = CFrame.new(900.2313232421875, 6.513261318206787, 4385.94287109375)
        CM = CFrame.new(1617.895263671875, 1.6109663248062134, 4367.8779296875)
-       NQ = "BuggyQuest1"
+       NQ = "DesertQuest"
        NM = "Desert Officer"
        LQ = 2
 
@@ -295,7 +319,7 @@ end)
             end
             end
 
-section1:addToggle("FastAttck", nil, function(value)
+section1:addToggle("FastAttck PC", nil, function(value)
 local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
 local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
 Camera:Stop()
@@ -310,7 +334,9 @@ coroutine.wrap(function()
 end)()
 end)
 
-
+ 
+    
+    
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist,v.Name)
 end
@@ -344,4 +370,12 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end
 end)
 
+
+section1:addToggle("FastAttck Mobile", nil, function(value)
+while _G.ABC do  wait()
+    hitbox()
+    attack()
+    end
+end)   
+   
 
