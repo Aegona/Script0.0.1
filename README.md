@@ -1,7 +1,7 @@
 ---> Aegona x Hub <-- {{[ Free Script ]}}
 
 _G.HideHB = true
-_G.ABC = true
+_G.ABC = false
 
 function attack() -- AUTO ATTACK
     game:GetService'VirtualUser':CaptureController()
@@ -158,6 +158,7 @@ TextColor = Color3.fromRGB(255, 255, 255)
 local page = venyx:addPage("Main", 5012544693)
 local point = venyx:addPage("POINT", 5012544693)
 local shop = venyx:addPage("SHOP", 5012544693)
+local set = venyx:addPage("Main2", 5012544693)
 local section1 = page:addSection("--- AutoFarm ---")
 local section2 = page:addSection("--------")
 local point2 = point:addSection("-- POINT --")
@@ -378,4 +379,3 @@ while _G.ABC do  wait()
     end
 end)   
    
-
