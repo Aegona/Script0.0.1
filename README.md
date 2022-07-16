@@ -1,7 +1,7 @@
 ---> Aegona x Hub <-- {{[ Free Script ]}}
 
 _G.HideHB = true
-_G.ABC = true
+_G.ABC = false
 
 function attack() -- AUTO ATTACK
     game:GetService'VirtualUser':CaptureController()
@@ -124,12 +124,26 @@ function CheckQuest()
        NM = "Snow Bandit"
        LQ = 1
 
-       elseif Lv == 100 or Lv <= 119 then
+       elseif Lv == 100 or Lv <= 2298 then
        Ms = "Snowman [Lv. 100]"
        CQ = CFrame.new(1384.1134033203125, 87.27277374267578, -1298.09130859375)
        CM = CFrame.new(1202.4942626953125, 105.77490997314453, -1475.2557373046875)
        NQ = "SnowQuest"
        NM = "Snowman"
+       LQ = 2
+       elseif Lv == 1009 or Lv <= 2298 then
+       Ms = "Snowman [Lv. 100]"
+       CQ = CFrame.new(1384.1134033203125, 87.27277374267578, -1298.09130859375)
+       CM = CFrame.new(1202.4942626953125, 105.77490997314453, -1475.2557373046875)
+       NQ = "SnowQuest"
+       NM = "Snowman"
+       LQ = 2
+       elseif Lv == 2299 or Lv <= 2300 then
+       Ms = "Head Baker [Lv. 2275]"
+       CQ = CFrame.new(-1929.4281005859375, 37.82392501831055, -12844.3291015625)
+       CM = CFrame.new(-2207.298828125, 53.52828598022461, -12857.837890625)
+       NQ = "CakeQuest2"
+       NM = "Head Baker"
        LQ = 2
     end
 end
@@ -141,7 +155,7 @@ end
 
 
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() 
 local venyx = library.new("z AEGONA X HUB z", 5013109572)
 
 -- themes
@@ -165,12 +179,11 @@ local point2 = point:addSection("-- POINT --")
 local shopgg = shop:addSection("-- SHOP --")
 
 section1:addToggle("AutoFarm", nil, function(value)
-_G.Farm = true
-wait(.1)
-if focusLost then
-venyx:Notify("AutoFarm = True ", value)
-end
+_G.Farm = value
 end)
+
+
+
 
 section1:addButton("FIX Delete AutoFarm", function()
 _G.Farm = false
@@ -249,7 +262,7 @@ end
 
 
 spawn(function()
-    while task.wait() do
+    while wait() do
         if _G.Farm then
             CheckQuest()
             if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
@@ -335,6 +348,20 @@ coroutine.wrap(function()
 end)()
 end)
 
+section1:addToggle("FastAttck Mobile Beta", nil, function(value)
+local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
+Camera:Stop()
+coroutine.wrap(function()
+    game:GetService("RunService").Stepped:Connect(function()
+        if getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack then
+            getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack = 0
+            getupvalues(CombatFramework)[2]['activeController'].hitboxMagnitude = 60
+            getupvalues(CombatFramework)[2]['activeController']:attack()
+        end
+    end)
+end)()
+end)
  
     
     
@@ -361,12 +388,26 @@ end
 end
 end)
 
+section1:addToggle("FreeHaki", nil, function(value)
+   while wait(1)  do
+local args = {
+    [1] = "Buso"
+}
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+
+end
+end)
 
 
 section1:addToggle("FastAttck Mobile", nil, function(value)
-while _G.ABC do  wait()
-    hitbox()
-    attack()
-    end
+_G.ABC = value
 end)   
    
+   spawn(function()
+       while wait() do
+       if _G.ABC then
+    hitbox()
+    attack()
+       end
+end
+end)
