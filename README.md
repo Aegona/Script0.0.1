@@ -38,7 +38,7 @@ local UICorner = Instance.new("UICorner")
 local ImageLabel = Instance.new("ImageLabel")
 
 Toogle.Name = "Toogle"
-Toogle.Parent = game.Players.CoreGui
+Toogle.Parent = game.CoreGui
 Toogle.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 button.Name = "button"
