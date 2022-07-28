@@ -32,30 +32,36 @@ local Weapon = nil
 
 
 
-local ToggleAEGONA = Instance.new("ScreenGui")
-local ToogleA = Instance.new("TextButton")
+local Toogle = Instance.new("ScreenGui")
+local button = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
+local ImageLabel = Instance.new("ImageLabel")
 
-ToggleAEGONA.Name = "ToggleAEGONA"
-ToggleAEGONA.Parent = game.CoreGui
-ToggleAEGONA.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Toogle.Name = "Toogle"
+Toogle.Parent = game.Players.CoreGui
+Toogle.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-ToogleA.Name = "ToogleA"
-ToogleA.Parent = ToggleAEGONA
-ToogleA.BackgroundColor3 = Color3.fromRGB(62, 147, 9)
-ToogleA.Position = UDim2.new(0.194303796, 0, 0.480566978, 0)
-ToogleA.Size = UDim2.new(0, 88, 0, 45)
-ToogleA.Font = Enum.Font.Ubuntu
-ToogleA.Text = "AEGONAHUB"
-ToogleA.TextColor3 = Color3.fromRGB(0, 0, 0)
-ToogleA.TextScaled = true
-ToogleA.TextSize = 14.000
-ToogleA.TextWrapped = true
-ToogleA.MouseButton1Click:Connect(function()
+button.Name = "button"
+button.Parent = Toogle
+button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+button.BorderSizePixel = 0
+button.Position = UDim2.new(0.0477326959, 0, 0.469606668, 0)
+button.Size = UDim2.new(0, 64, 0, 50)
+button.Font = Enum.Font.SourceSans
+button.TextColor3 = Color3.fromRGB(0, 0, 0)
+button.TextSize = 14.000
+button.MouseButton1Click:Connect(function()
 	game.CoreGui:FindFirstChild("z AEGONA X HUB z").Enabled = not  game.CoreGui:FindFirstChild("z AEGONA X HUB z").Enabled
 end)
 
-UICorner.Parent = ToogleA
+UICorner.Parent = button
+
+ImageLabel.Parent = button
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0.125, 0, 0, 0)
+ImageLabel.Size = UDim2.new(0, 48, 0, 50)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=2869969022"
 
 
 function CheckQuest()
